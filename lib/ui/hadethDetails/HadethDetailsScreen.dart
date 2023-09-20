@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:islami_c9_sun/ui/MyThemeData.dart';
 import 'package:islami_c9_sun/ui/home/hadeth/Hadeth.dart';
 
 class HadethDetailsScreen extends StatelessWidget {
@@ -8,9 +9,11 @@ class HadethDetailsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     var args = ModalRoute.of(context)?.settings.arguments as Hadeth;
     return Container(
-        decoration: const BoxDecoration(
+        decoration: BoxDecoration(
             image: DecorationImage(
-                image: AssetImage('assets/images/main_background.png'),
+                image: AssetImage(MyThemeData.isDarkEnabled
+                    ? 'assets/images/main_background_dark.jpg'
+                    : 'assets/images/main_background.png'),
                 fit: BoxFit.fill)),
         child: Scaffold(
           appBar: AppBar(
@@ -25,7 +28,7 @@ class HadethDetailsScreen extends StatelessWidget {
                     child: Text(
                       args.content,
                       textAlign: TextAlign.center,
-                      style: TextStyle(fontSize: 20),
+                      style: Theme.of(context).textTheme.bodyMedium,
                     ),
                   ),
                 ),
